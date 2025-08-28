@@ -1,6 +1,9 @@
-package johnatanSSP.REbooks;
+package johnatanSSP.REbooks.books;
 
 import jakarta.persistence.*;
+import johnatanSSP.REbooks.archives.ArchivesModel;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_register")
@@ -15,6 +18,7 @@ public class BooksModel {
     private String Genre;
     private int Pages;
     private String Reader;
+    private List<ArchivesModel> archive;
 
 
     public void BooksModel(){
