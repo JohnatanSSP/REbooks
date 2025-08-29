@@ -18,11 +18,11 @@ public class BooksModel {
     private String Genre;
     private int Pages;
     private String Reader;
-    private List<ArchivesModel> archive;
+    @OneToOne
+    @JoinColumn(name = "archive_id")
+    private ArchivesModel archive;
 
-
-    public void BooksModel(){
-
+    public BooksModel() {
     }
 
     public BooksModel(String title, String author, String releaseDate, String genre, int pages, String reader) {

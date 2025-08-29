@@ -3,6 +3,7 @@ package johnatanSSP.REbooks.archives;
 import jakarta.persistence.*;
 import johnatanSSP.REbooks.books.BooksModel;
 
+
 @Entity
 @Table(name = "tb_archives")
 public class ArchivesModel {
@@ -12,10 +13,19 @@ public class ArchivesModel {
     private long Id;
     private String Image;
     private String Download;
+
+    @OneToOne(mappedBy = "archive")
     private BooksModel book;
 
-    public void Archives(){
+    public BooksModel getBook() {
+        return book;
+    }
 
+    public void setBook(BooksModel book) {
+        this.book = book;
+    }
+
+    public ArchivesModel() {
     }
 
     public ArchivesModel(String image, String download, BooksModel book) {
