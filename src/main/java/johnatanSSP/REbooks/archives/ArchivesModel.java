@@ -17,8 +17,9 @@ public class ArchivesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
-    @Column(unique = true)
+    @Column(name = "ImgUrl")
     private String Image;
+    @Column(name = "DownloadUrl")
     private String Download;
 
     @OneToOne(mappedBy = "archive")
