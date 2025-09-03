@@ -3,7 +3,7 @@ package johnatanSSP.REbooks.books;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/books")
 public class BooksController {
 
     @GetMapping("/Hello")

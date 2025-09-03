@@ -3,7 +3,7 @@ package johnatanSSP.REbooks.archives;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("arquives")
+@RequestMapping("/arquives")
 public class ArchivesController {
 
     @GetMapping("/show_all")
