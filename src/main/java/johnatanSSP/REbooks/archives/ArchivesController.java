@@ -1,15 +1,24 @@
 package johnatanSSP.REbooks.archives;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("arquives")
 public class ArchivesController {
 
-    @GetMapping("/archives")
+    @GetMapping("/show_all")
+    public String showAll(){return "show all";}
+
+    @PostMapping("/create")
+    public String createArquives(){return "create arquives";}
+
+    @PutMapping("/alter")
     public String Archives(){
-        return "archives";
+        return "alter archives";
     };
+
+    @DeleteMapping("delete")
+    public String deleteArquives(){return "delete arquives";}
+
+
 }
