@@ -22,8 +22,8 @@ public class BooksController {
 
     //add books (create)
     @PostMapping("/create")
-    public String create(){
-        return "create Book";
+    public BooksModel createBooks(@RequestBody BooksModel book) {
+        return booksService.createBook(book);
     };
 
     //search books

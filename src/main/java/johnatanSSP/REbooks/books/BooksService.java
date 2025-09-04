@@ -26,6 +26,10 @@ public class BooksService {
         return booksByID.orElse(null);
     }
 
+    public BooksModel createBook(BooksModel book) {
+        return booksRepository.save(book);
+    }
+
 
 
 }
