@@ -31,9 +31,9 @@ public class BooksController {
     public List<BooksModel> showAll(){
         return booksService.showAll();
     }
-    @GetMapping("/allShowID")
-    public String allID(){
-        return "show all ID";
+    @GetMapping("/show/{id}")
+    public BooksModel showAllID(@PathVariable Long id){
+        return booksService.findById(id);
     }
 
     //alter database
