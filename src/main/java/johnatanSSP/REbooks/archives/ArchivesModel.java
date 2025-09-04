@@ -1,10 +1,13 @@
 package johnatanSSP.REbooks.archives;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import johnatanSSP.REbooks.books.BooksModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @Entity
@@ -23,7 +26,8 @@ public class ArchivesModel {
     private String Download;
 
     @OneToOne(mappedBy = "archive")
-    private BooksModel book;
+    @JsonIgnore
+    private List <BooksModel> book;
 
 
 }

@@ -1,4 +1,6 @@
 package johnatanSSP.REbooks.books;
 
-public class BooksRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BooksRepository extends JpaRepository<BooksModel, Long> {
 }

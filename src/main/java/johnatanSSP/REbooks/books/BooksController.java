@@ -1,10 +1,19 @@
 package johnatanSSP.REbooks.books;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/books")
 public class BooksController {
+
+    private BooksService booksService;
+
+    public BooksController(BooksService booksService) {
+        this.booksService = booksService;
+    }
 
     @GetMapping("/Hello")
     public String HelloSpring(){
@@ -18,9 +27,9 @@ public class BooksController {
     };
 
     //search books
-    @GetMapping("/allShow")
-    public String all(){
-        return "all Books";
+    @GetMapping("/showAll")
+    public List<BooksModel> showAll(){
+        return booksService.showAll();
     }
     @GetMapping("/allShowID")
     public String allID(){
