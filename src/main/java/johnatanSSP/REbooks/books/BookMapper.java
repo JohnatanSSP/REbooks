@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BookMapper {
-    public BooksModel map(BookDTO bookDTO) {
+    public static BooksModel map(BookDTO bookDTO) {
         BooksModel book = new BooksModel();
         book.setId(bookDTO.getId());
         book.setAuthor(bookDTO.getAuthor());
