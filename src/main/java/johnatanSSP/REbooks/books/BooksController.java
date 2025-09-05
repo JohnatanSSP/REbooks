@@ -37,15 +37,15 @@ public class BooksController {
     }
 
     //alter database
-    @PutMapping("/alterID")
-    public String update(){
+    @PutMapping("/update/{id}")
+    public String update(@PathVariable Long id){
         return "update Book";
     }
 
     //delete books
-    @DeleteMapping("/deleteID")
-    public String delete(){
-        return "delete Book";
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id){
+        booksService.deleteBookById(id);
     }
 
 }
