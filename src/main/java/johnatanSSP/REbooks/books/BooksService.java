@@ -34,8 +34,12 @@ public class BooksService {
         booksRepository.deleteById(id);
     }
 
-    public BooksModel updateBook(BooksModel book) {
-        return booksRepository.save(book);
+    public BooksModel updateBook(Long id, BooksModel newBook) {
+        if(booksRepository.existsById(id)){
+            newBook.setId(id);
+            return booksRepository.save(newBook);
+        }
+        return null;
     }
 
 

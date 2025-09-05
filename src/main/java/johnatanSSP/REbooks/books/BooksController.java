@@ -38,8 +38,8 @@ public class BooksController {
 
     //alter database
     @PutMapping("/update/{id}")
-    public BooksModel update(@RequestBody BooksModel book){
-        return booksService.updateBook(book);
+    public BooksModel update(@PathVariable Long id, @RequestBody BooksModel newBook){
+        return booksService.updateBook(id, newBook);
     }
 
     //delete books
