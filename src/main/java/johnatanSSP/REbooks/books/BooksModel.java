@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Table(name = "tb_register")
 @NoArgsConstructor
@@ -27,5 +25,7 @@ public class BooksModel {
     @OneToOne
     @JoinColumn(name = "archive_id")
     private ArchivesModel archive;
+    private String Review;
+
 
 }
