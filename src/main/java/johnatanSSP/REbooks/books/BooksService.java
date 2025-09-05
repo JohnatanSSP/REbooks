@@ -10,9 +10,11 @@ public class BooksService {
 
 
     private BooksRepository booksRepository;
+    private BookMapper bookMapper;
 
-    public BooksService(BooksRepository booksRepository) {
+    public BooksService(BooksRepository booksRepository, BookMapper bookMapper) {
         this.booksRepository = booksRepository;
+        this.bookMapper = bookMapper;
     }
 
     //show all books
@@ -26,8 +28,10 @@ public class BooksService {
         return booksByID.orElse(null);
     }
 
-    public BooksModel createBook(BooksModel book) {
-        return booksRepository.save(book);
+    public BookDTO createBook(BookDTO bookDTO) {
+        BooksModel books = new BookMapper().map(bookDTO);
+        books = booksRepository.save(books);
+        return bookMapper.map(books);
     }
 
     public void deleteBookById(Long id){
