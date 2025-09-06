@@ -1,20 +1,14 @@
 package johnatanSSP.REbooks.books;
-
-import jakarta.persistence.*;
 import johnatanSSP.REbooks.archives.ArchivesModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "tb_register")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class BooksModel {
+public class BookDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private String Title;
     private String Author;
@@ -22,10 +16,6 @@ public class BooksModel {
     private String Genre;
     private int Pages;
     private String Reader;
-    @OneToOne
-    @JoinColumn(name = "archive_id")
     private ArchivesModel archive;
-    private String Review;
-
-
+    private String review;
 }

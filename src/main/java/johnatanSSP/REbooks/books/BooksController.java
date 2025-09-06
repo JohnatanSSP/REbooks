@@ -22,23 +22,23 @@ public class BooksController {
 
     //add books (create)
     @PostMapping("/create")
-    public BooksModel createBooks(@RequestBody BooksModel book) {
+    public BookDTO createBooks(@RequestBody BookDTO book) {
         return booksService.createBook(book);
     };
 
     //search books
     @GetMapping("/showAll")
-    public List<BooksModel> showAll(){
+    public List<BookDTO> showAll(){
         return booksService.showAll();
     }
     @GetMapping("/show/{id}")
-    public BooksModel showAllID(@PathVariable Long id){
+    public BookDTO showAllID(@PathVariable Long id){
         return booksService.findById(id);
     }
 
     //alter database
     @PutMapping("/update/{id}")
-    public BooksModel update(@PathVariable Long id, @RequestBody BooksModel newBook){
+    public BookDTO update(@PathVariable Long id, @RequestBody BookDTO newBook){
         return booksService.updateBook(id, newBook);
     }
 
