@@ -1,6 +1,8 @@
 package johnatanSSP.REbooks.books;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +24,10 @@ public class BooksController {
 
     //add books (create)
     @PostMapping("/create")
-    public BookDTO createBooks(@RequestBody BookDTO book) {
-        return booksService.createBook(book);
+    public ResponseEntity<String> createBooks(@RequestBody BookDTO book) {
+        BookDTO newBook = booksService.createBook(book);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Book created with succes" + newBook.getTitle());
     };
 
     //search books
@@ -44,8 +48,14 @@ public class BooksController {
 
     //delete books
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id){
-        booksService.deleteBookById(id);
+    public ResponseEntity<String> delete(@PathVariable Long id){
+
+        if( booksService.findById(id)!= null){
+            booksService.deleteBookById(id);
+            return ResponseEntity.ok("Book with ID" + id + "deleted");
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book with ID " + id + " NOT FOUND...");
+        }
     }
 
 }
