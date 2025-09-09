@@ -5,12 +5,14 @@ import johnatanSSP.REbooks.archives.ArchivesModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "tb_register")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@ToString(exclude = "archive")
 public class BooksModel {
 
     @Id
