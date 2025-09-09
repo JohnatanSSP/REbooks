@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Adicionar Ninja</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #e9ecef;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            color: #444;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f3f5;
+        }
+
+        tr:hover {
+            background-color: #dee2e6;
+            transition: background-color 0.3s ease;
+        }
+
+        th {
+            font-weight: 600;
+        }
+
+        /* Estilo dos botões */
+        a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 14px;
+            margin: 0 4px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        a:nth-of-type(1) {
+            background-color: #17a2b8; /* Ver detalhes - azul */
+        }
+
+        a:nth-of-type(2) {
+            background-color: #ffc107; /* Alterar - amarelo */
+            color: #333;
+        }
+
+        a:nth-of-type(3) {
+            background-color: #dc3545; /* Deletar - vermelho */
+        }
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.9rem;
+            }
+
+            td, th {
+                padding: 10px;
+            }
+
+            a {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+        }
+    </style><style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+    }
+
+    body {
+        background-color: #f8f9fa;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    table {
+        width: 90%;
+        border-collapse: collapse;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    thead {
+        background-color: #e9ecef;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: center;
+        color: #444;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f1f3f5;
+    }
+
+    tr:hover {
+        background-color: #dee2e6;
+        transition: background-color 0.3s ease;
+    }
+
+    th {
+        font-weight: 600;
+    }
+
+    /* Estilo dos botões */
+    a {
+        text-decoration: none;
+        color: white;
+        padding: 8px 14px;
+        margin: 0 4px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    a:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    a:nth-of-type(1) {
+        background-color: #17a2b8; /* Ver detalhes - azul */
+    }
+
+    a:nth-of-type(2) {
+        background-color: #ffc107; /* Alterar - amarelo */
+        color: #333;
+    }
+
+    a:nth-of-type(3) {
+        background-color: #dc3545; /* Deletar - vermelho */
+    }
+
+    @media (max-width: 768px) {
+        table {
+            font-size: 0.9rem;
+        }
+
+        td, th {
+            padding: 10px;
+        }
+
+        a {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+        }
+    }
+</style>
+</head>
+<body>
+<h1>Adicionar Novo Ninja</h1>
+<div class="form-container">
+    <div th:if="${mensagem}" class="mensagem" th:text="${mensagem}"></div>
+    <form th:action="@{/ninjas/ui/save}" th:object="${ninja}" method="post">
+        <label for="Title">Nome:</label>
+        <input type="text" id="Title" th:field="*{Title}" required />
+
+        <label for="Author">Email:</label>
+        <input type="text" id="Author" th:field="*{Author}" required />
+
+        <label for="Reader">URL da Imagem:</label>
+        <input type="text" id="Reader" th:field="*{Reader}" required />
+
+        <label for="Pages">Idade:</label>
+        <input type="number" id="Pages" th:field="*{Pages}" required />
+
+        <label for="Gender">Rank:</label>
+        <input type="text" id="Gender" th:field="*{Gender}" />
+
+        <button type="submit">ADD Book</button>
+    </form>
+    <a th:href="@{/book/ui/show-all}">Voltar para a lista de ninjas</a>
+</div>
+</body>
+</html>

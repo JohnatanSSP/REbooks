@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Show All Books</title>
+    <title>Details</title>
 
     <!-- Fonte moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -105,38 +105,17 @@
         }
     </style>
 </head>
-<body>
-<h1>Show All Books</h1>
+    <body>
+    <h1>Details book</h1>
+        <div>
 
-<table>
-    <thead>
-    <tr>
-        <th>Img</th>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Reader</th>
-        <th>Pages</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="book : ${books}">
-        <td><!-- Aqui você pode colocar uma imagem futuramente --></td>
-        <td th:text="${book.Id}"></td>
-        <td th:text="${book.Title}"></td>
-        <td th:text="${book.Author}"></td>
-        <td th:text="${book.Reader}"></td>
-        <td th:text="${book.Pages}"></td>
-        <td th:text="${book.Gender}"></td>
-        <td>
-            <a th:href="@{/book/details/{id}(id=${book.id})}">Show Details</a>
-            <a th:href="@{/book/ui/show/{id}(id=${book.id})}">Update</a>
-            <a th:href="@{/book/ui/add">ADD</a>
-            <a th:href="@{/delete/{id}(id=${book.id})}">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-</body>
+            <h2 th:text="${book.Title}"></h2>
+            <p><strong>Author:</strong> <span th:text="${book.Author}"></span></p>
+            <p><strong>Reader:</strong> <span th:text="${book.Reader}"></span></p>
+            <p><strong>Rank:</strong> <span th:text="${book.Pages}"></span></p>
+
+            <a href="/ninjas/ui/listar">Voltar para a lista de ninjas</a>
+        </div>
+    </body>
+
 </html>
