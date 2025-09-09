@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/books")
 public class BooksController {
 
-    private BooksService booksService;
+    private final BooksService booksService;
 
     public BooksController(BooksService booksService) {
         this.booksService = booksService;

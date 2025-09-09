@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class BooksService {
 
 
-    private BooksRepository booksRepository;
-    private BookMapper bookMapper;
+    private final BooksRepository booksRepository;
+    private final BookMapper bookMapper;
 
     public BooksService(BooksRepository booksRepository, BookMapper bookMapper) {
         this.booksRepository = booksRepository;
