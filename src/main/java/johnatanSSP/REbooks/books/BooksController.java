@@ -32,18 +32,36 @@ public class BooksController {
 
     //search books
     @GetMapping("/showAll")
-    public List<BookDTO> showAll(){
-        return booksService.showAll();
+    public ResponseEntity<List<BookDTO>>  showAll(){
+        List<BookDTO> books = booksService.showAll();
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(books);
     }
     @GetMapping("/show/{id}")
-    public BookDTO showAllID(@PathVariable Long id){
-        return booksService.findById(id);
+    public ResponseEntity<?> showAllID(@PathVariable Long id){
+
+        BookDTO book = booksService.findById(id);
+        if(book == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Book not found");
+        }else {
+            return ResponseEntity.ok().body("Book found with succes" + book.getTitle());
+        }
+
     }
 
     //alter database
     @PutMapping("/update/{id}")
-    public BookDTO update(@PathVariable Long id, @RequestBody BookDTO newBook){
-        return booksService.updateBook(id, newBook);
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody BookDTO newBook){
+
+        BookDTO book = booksService.updateBook(id, newBook);
+        if(book == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Book not found");
+        }else  {
+            return ResponseEntity.ok().body("Book updated with succes" + book.getTitle());
+
+        }
     }
 
     //delete books
