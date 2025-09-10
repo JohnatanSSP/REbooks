@@ -7,135 +7,90 @@
     <!-- Fonte moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
         body {
+            font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        table {
-            width: 90%;
-            border-collapse: collapse;
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        thead {
-            background-color: #e9ecef;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: center;
-            color: #444;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f1f3f5;
-        }
-
-        tr:hover {
-            background-color: #dee2e6;
-            transition: background-color 0.3s ease;
-        }
-
-        th {
+        .page-title {
             font-weight: 600;
         }
-
-        /* Estilo dos botões */
-        a {
-            text-decoration: none;
-            color: white;
-            padding: 8px 14px;
-            margin: 0 4px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        a:nth-of-type(1) {
-            background-color: #17a2b8; /* Ver detalhes - azul */
-        }
-
-        a:nth-of-type(2) {
-            background-color: #ffc107; /* Alterar - amarelo */
-            color: #333;
-        }
-
-        a:nth-of-type(3) {
-            background-color: #dc3545; /* Deletar - vermelho */
-        }
-
-        @media (max-width: 768px) {
-            table {
-                font-size: 0.9rem;
-            }
-
-            td, th {
-                padding: 10px;
-            }
-
-            a {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
+        .table td, .table th {
+            vertical-align: middle;
         }
     </style>
 </head>
 <body>
-<h1>Show All Books</h1>
-<a class="btn-adicionar" th:href="@{/books/ui/add}">Add New Book</a>
-<table>
-    <thead>
-    <tr>
-        <th>Img</th>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Reader</th>
-        <th>Pages</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="book : ${books}">
-        <td><!-- Aqui você pode colocar uma imagem futuramente --></td>
-        <td th:text="${book.Id}"></td>
-        <td th:text="${book.Title}"></td>
-        <td th:text="${book.Author}"></td>
-        <td th:text="${book.Reader}"></td>
-        <td th:text="${book.Pages}"></td>
-        <td>
-            <a th:href="@{/books/details/{id}(id=${book.id})}">Show Details</a>
-            <a th:href="@{/books/ui/show/{id}(id=${book.id})}">Update</a>
-<!--            <a th:href="@{/book/ui/add">ADD</a>-->
-            <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">📚 Book Manager</a>
+        <div>
+            <a class="btn btn-light btn-sm" th:href="@{/books/ui/add}">➕ Add New Book</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="page-title text-center mb-4">Show All Books</h1>
+
+    <!-- Tabela de livros -->
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-primary">
+                <tr>
+                    <th>Img</th>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Reader</th>
+                    <th>Pages</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book : ${books}">
+                    <td>
+                        <!-- Placeholder de imagem -->
+                        <img src="https://via.placeholder.com/50x70" class="img-thumbnail" alt="Book Img">
+                    </td>
+                    <td th:text="${book.id}"></td>
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.author}"></td>
+                    <td th:text="${book.reader}"></td>
+                    <td th:text="${book.pages}"></td>
+                    <td class="text-center">
+                        <a class="btn btn-sm btn-info text-white"
+                           th:href="@{/books/details/{id}(id=${book.id})}">
+                            Details
+                        </a>
+                        <a class="btn btn-sm btn-warning text-white"
+                           th:href="@{/books/ui/show/{id}(id=${book.id})}">
+                            Update
+                        </a>
+                        <a class="btn btn-sm btn-danger"
+                           th:href="@{/books/delete/{id}(id=${book.id})}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</script>
+
 </body>
 </html>

@@ -2,120 +2,68 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Details</title>
+    <title>Book Details</title>
 
     <!-- Fonte moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
         body {
+            font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        table {
-            width: 90%;
-            border-collapse: collapse;
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        thead {
-            background-color: #e9ecef;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: center;
-            color: #444;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f1f3f5;
-        }
-
-        tr:hover {
-            background-color: #dee2e6;
-            transition: background-color 0.3s ease;
-        }
-
-        th {
-            font-weight: 600;
-        }
-
-        /* Estilo dos botões */
-        a {
-            text-decoration: none;
-            color: white;
-            padding: 8px 14px;
-            margin: 0 4px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        a:nth-of-type(1) {
-            background-color: #17a2b8; /* Ver detalhes - azul */
-        }
-
-        a:nth-of-type(2) {
-            background-color: #ffc107; /* Alterar - amarelo */
-            color: #333;
-        }
-
-        a:nth-of-type(3) {
-            background-color: #dc3545; /* Deletar - vermelho */
-        }
-
-        @media (max-width: 768px) {
-            table {
-                font-size: 0.9rem;
-            }
-
-            td, th {
-                padding: 10px;
-            }
-
-            a {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
+        .card {
+            border-radius: 1rem;
         }
     </style>
 </head>
-    <body>
-    <h1>Details book</h1>
-        <div>
+<body>
 
-            <h2 th:text="${book.Title}"></h2>
-            <p><strong>Author:</strong> <span th:text="${book.Author}"></span></p>
-            <p><strong>Reader:</strong> <span th:text="${book.Reader}"></span></p>
-            <p><strong>Pages:</strong> <span th:text="${book.Pages}"></span></p>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" th:href="@{/books/ui/showall}">📚 Book Manager</a>
+    </div>
+</nav>
 
-            <a href="/books/ui/showall">Back Home</a>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-3" th:text="${book.Title}">Book Title</h2>
+
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item">
+                            <strong>Author:</strong> <span th:text="${book.Author}"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Reader:</strong> <span th:text="${book.Reader}"></span>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Pages:</strong> <span th:text="${book.Pages}"></span>
+                        </li>
+                    </ul>
+
+                    <div class="d-grid">
+                        <a th:href="@{/books/ui/showall}" class="btn btn-outline-secondary">⬅ Back Home</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </body>
+    </div>
+</div>
 
+<!-- Bootstrap JS -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</script>
+</body>
 </html>
