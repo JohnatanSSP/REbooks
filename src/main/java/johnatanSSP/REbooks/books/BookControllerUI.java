@@ -19,11 +19,11 @@ public class BookControllerUI {
         this.booksService = booksService;
     }
 
-    @GetMapping("/showall")
+    @GetMapping("/show_all")
     public String showAll(Model model) {
         List<BookDTO> book = booksService.showAll();
         model.addAttribute("books", book);
-        return "showall";
+        return "show_all";
     }
 
     @GetMapping("/delete/{id}")
@@ -40,7 +40,7 @@ public class BookControllerUI {
             return "detailsbook";
         }else {
             model.addAttribute("mensagem", "book not found");
-            return "showall";
+            return "show_all";
         }
     }
 
