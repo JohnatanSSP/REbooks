@@ -29,7 +29,7 @@ public class BookControllerUI {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id){
         booksService.deleteBookById(id);
-        return "redirect:/books/ui/show-all";
+        return "redirect:/books/ui/showall";
     }
 
     @GetMapping("/show/{id}")
@@ -44,16 +44,16 @@ public class BookControllerUI {
         }
     }
 
-//    @GetMapping("/add")
-//    public String addBook(Model model){
-//        model.addAttribute("book", new BookDTO());
-//        return "addbook";
-//    }
-//
-//    @PostMapping("/save")
-//    public String saveBook(@ModelAttribute BookDTO book, RedirectAttributes redirectAttributes){
-//        booksService.createBook(book);
-//        redirectAttributes.addFlashAttribute("mensagem", "Book saved successfully");
-//        return "redirect:/books/ui/showall";
-//    }
+    @GetMapping("/add")
+    public String addBook(Model model){
+        model.addAttribute("book", new BookDTO());
+        return "addbook";
+    }
+
+    @PostMapping("/save")
+    public String saveBook(@ModelAttribute BookDTO book, RedirectAttributes redirectAttributes){
+        booksService.createBook(book);
+        redirectAttributes.addFlashAttribute("mensagem", "Book saved successfully");
+        return "redirect:/books/ui/showall";
+    }
 }

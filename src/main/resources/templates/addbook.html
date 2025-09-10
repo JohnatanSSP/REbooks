@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Adicionar Ninja</title>
+    <title>add Book</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <style>
         * {
@@ -199,28 +199,26 @@
 </style>
 </head>
 <body>
-<h1>Adicionar Novo Ninja</h1>
+<h1>Add new Book</h1>
 <div class="form-container">
     <div th:if="${mensagem}" class="mensagem" th:text="${mensagem}"></div>
-    <form th:action="@{/ninjas/ui/save}" th:object="${ninja}" method="post">
-        <label for="Title">Nome:</label>
+    <form th:action="@{/books/ui/save}" th:object="${book}" method="post">
+
+        <label for="Title">Title:</label>
         <input type="text" id="Title" th:field="*{Title}" required />
 
-        <label for="Author">Email:</label>
+        <label for="Author">Author:</label>
         <input type="text" id="Author" th:field="*{Author}" required />
 
-        <label for="Reader">URL da Imagem:</label>
+        <label for="Reader">Reader:</label>
         <input type="text" id="Reader" th:field="*{Reader}" required />
 
-        <label for="Pages">Idade:</label>
+        <label for="Pages">Pages:</label>
         <input type="number" id="Pages" th:field="*{Pages}" required />
-
-        <label for="Gender">Rank:</label>
-        <input type="text" id="Gender" th:field="*{Gender}" />
 
         <button type="submit">ADD Book</button>
     </form>
-    <a th:href="@{/book/ui/show-all}">Voltar para a lista de ninjas</a>
+    <a th:href="@{/books/ui/showall}">Back Home</a>
 </div>
 </body>
 </html>

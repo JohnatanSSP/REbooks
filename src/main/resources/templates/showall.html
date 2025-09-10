@@ -107,7 +107,7 @@
 </head>
 <body>
 <h1>Show All Books</h1>
-
+<a class="btn-adicionar" th:href="@{/books/ui/add}">Add New Book</a>
 <table>
     <thead>
     <tr>
@@ -128,12 +128,11 @@
         <td th:text="${book.Author}"></td>
         <td th:text="${book.Reader}"></td>
         <td th:text="${book.Pages}"></td>
-        <td th:text="${book.Gender}"></td>
         <td>
-            <a th:href="@{/book/details/{id}(id=${book.id})}">Show Details</a>
-            <a th:href="@{/book/ui/show/{id}(id=${book.id})}">Update</a>
-            <a th:href="@{/book/ui/add">ADD</a>
-            <a th:href="@{/delete/{id}(id=${book.id})}">Delete</a>
+            <a th:href="@{/books/details/{id}(id=${book.id})}">Show Details</a>
+            <a th:href="@{/books/ui/show/{id}(id=${book.id})}">Update</a>
+<!--            <a th:href="@{/book/ui/add">ADD</a>-->
+            <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
         </td>
     </tr>
     </tbody>

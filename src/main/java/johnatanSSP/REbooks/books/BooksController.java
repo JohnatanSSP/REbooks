@@ -31,7 +31,7 @@ public class BooksController {
     };
 
     //search books
-    @GetMapping("/showAll")
+    @GetMapping("/showall")
     public ResponseEntity<List<BookDTO>>  showAll(){
         List<BookDTO> books = booksService.showAll();
         return ResponseEntity.status(HttpStatus.OK)
