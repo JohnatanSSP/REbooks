@@ -1,7 +1,5 @@
 package johnatanSSP.REbooks.books;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +17,11 @@ public class BookControllerUI {
         this.booksService = booksService;
     }
 
-    @GetMapping("/show_all")
+    @GetMapping("/showall")
     public String showAll(Model model) {
         List<BookDTO> book = booksService.showAll();
         model.addAttribute("books", book);
-        return "show_all";
+        return "showall";
     }
 
     @GetMapping("/delete/{id}")
@@ -40,7 +38,7 @@ public class BookControllerUI {
             return "detailsbook";
         }else {
             model.addAttribute("mensagem", "book not found");
-            return "show_all";
+            return "showall";
         }
     }
 

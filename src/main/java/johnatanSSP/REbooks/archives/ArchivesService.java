@@ -1,37 +1,34 @@
 package johnatanSSP.REbooks.archives;
 
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class ArchivesService {
 
-    private ArchivesRepository archivesRepository;
+    private final ArchivesRepository archivesRepository;
+    private final ArchivesMapper archivesMapper;
 
-    public ArchivesService(ArchivesRepository archivesRepository) {
+    public ArchivesService(ArchivesRepository archivesRepository, ArchivesMapper archivesMapper) {
         this.archivesRepository = archivesRepository;
-    }
-
-    public List<ArchivesModel> ShowAll() {
-        return archivesRepository.findAll();
+        this.archivesMapper = archivesMapper;
     }
 
     public ArchivesModel ShowById(Long id) {
         return archivesRepository.findById(id).orElse(null);
     }
 
-    public ArchivesModel create(ArchivesModel archives) {
-        return archivesRepository.save(archives);
+    public ArchivesDTO createBook(ArchivesDTO archivesDTO) {
+        ArchivesModel archives = ArchivesMapper.map(archivesDTO);
+        archives = archivesRepository.save(archives);
+        return archivesMapper.map(archives);
     }
 
-    public void deleteArquivesByID(Long id) {
+    public void deleteArchivesByID(Long id) {
         archivesRepository.deleteById(id);
     }
 
-    public ArchivesModel update(ArchivesModel archives) {
-        return archivesRepository.save(archives);
-    }
 
 
 

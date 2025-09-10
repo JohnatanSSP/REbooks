@@ -16,8 +16,6 @@ public class BookMapper {
         book.setTitle(bookDTO.getTitle());
         book.setGenre(bookDTO.getGenre());
         book.setPages(bookDTO.getPages());
-
-
         return book;
     }
     public BookDTO map(BooksModel book) {
