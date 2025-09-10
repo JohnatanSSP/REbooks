@@ -1,7 +1,5 @@
 package johnatanSSP.REbooks.archives;
 
-import johnatanSSP.REbooks.books.BookDTO;
-import johnatanSSP.REbooks.books.BookMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

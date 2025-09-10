@@ -1,5 +1,6 @@
 package johnatanSSP.REbooks.books;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ public class BooksController {
 
     //add books (create)
     @PostMapping("/create")
+    @Operation(summary = "cria um objeto novo no DB")
     public ResponseEntity<String> createBooks(@RequestBody BookDTO book) {
         BookDTO newBook = booksService.createBook(book);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -32,12 +34,14 @@ public class BooksController {
 
     //search books
     @GetMapping("/showall")
+    @Operation(summary = "mostra todos objetos do DB")
     public ResponseEntity<List<BookDTO>>  showAll(){
         List<BookDTO> books = booksService.showAll();
         return ResponseEntity.status(HttpStatus.OK)
                 .body(books);
     }
     @GetMapping("/show/{id}")
+    @Operation(summary = "mostra em detalhes o objeto")
     public ResponseEntity<?> showAllID(@PathVariable Long id){
 
         BookDTO book = booksService.findById(id);
@@ -52,6 +56,7 @@ public class BooksController {
 
     //alter database
     @PutMapping("/update/{id}")
+    @Operation(summary = "atualiza objeto")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody BookDTO newBook){
 
         BookDTO book = booksService.updateBook(id, newBook);
@@ -66,6 +71,7 @@ public class BooksController {
 
     //delete books
     @DeleteMapping("/delete/{id}")
+    @Operation(summary = "deleta objeto especifico")
     public ResponseEntity<String> delete(@PathVariable Long id){
 
         if( booksService.findById(id)!= null){
